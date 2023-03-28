@@ -47,7 +47,7 @@ app.post(
         //Opcion 2
         const {numero_1, numero_2}= req.body;
         const resultado = numero_1-numero_2;        
-        res.json("Activar Respuesta Restar");
+        //res.json("Activar Respuesta Restar");
         res.json(resultado);
 
     }
@@ -57,14 +57,27 @@ app.post(
 //Como queda la ruta para dividir
 app.post(
     '/api/dividir',
-    (req,res)=>{        
+    (req,res)=>{       
+        console.log("Alguien esta conectandose a la ruta dividir");
+        
         const {numero_1, numero_2}= req.body;
         let resultado;
-        if(numero_2 != 0){
-            resultado = numero_1/numero_2;                
-        }else
-        {
-            resultado= "ERROR";
+
+        //Opcion 1        
+        // if(numero_2 != 0){
+        //     resultado = numero_1/numero_2;                
+        // }else
+        // {
+        //     resultado= "ERROR";
+        // }
+
+        //Opcion2
+        try {
+            resultado = numero_1/numero_2;                            
+        }
+        catch(error){
+            //gestionar el error
+            resultado=error;
         }
 
         res.json(resultado);
