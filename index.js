@@ -89,7 +89,21 @@ app.post(
 
         res.json(resultado);
     }
-)
+);
+
+app.post(
+    '/api/multiplicar',
+    (req,res)=>{
+
+        console.log("Alguien esta conectandose a la ruta multiplicar");
+        const {numero_1, numero_2}= req.body;
+        const resultado = numero_1*numero_2;        
+        
+        res.json(resultado);
+
+    }
+);
+
 //3. Crear un servicio para escuchar peticiones
 app.listen(
     3000,
